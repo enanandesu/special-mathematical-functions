@@ -5,9 +5,9 @@
     "Luna-Flow/calculus-numerical": "0.3.0-alpha-2"
   },
   "readme": "README.md",
-  "repository": "",
+  "repository": "https://github.com/enanandesu/special-mathematical-functions",
   "license": "Apache-2.0",
-  "keywords": [],
+  "keywords": ["math", "function", "calculus"],
   "description": "",
   "source": "src"
 }
