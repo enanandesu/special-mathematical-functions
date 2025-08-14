@@ -1,9 +1,15 @@
-pub fn erf(x : Double) -> Double{
+///|
+/// Returns the error function of argument.
+pub fn erf(x : Double) -> Double {
   let f = t => @math.exp(-t * t)
-  let (result, _, _) =@itgt.adap_quad_gk(f, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100).unwrap()
-   2.0 / @math.PI.sqrt() * result
+  let (result, _, _) = @itgt.adap_quad_gk(
+    f, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100,
+  ).unwrap()
+  2.0 / @math.PI.sqrt() * result
 }
-test "erf"{
+
+///|
+test "erf" {
   inspect(erf(0.0), content="0")
   inspect(erf(1.0), content="0.8427007929497149")
   inspect(erf(-1.0), content="-0.8427007929497149")
@@ -18,46 +24,69 @@ test "erf"{
   inspect(erf(10.0), content="1")
   inspect(erf(-10.0), content="-1")
 }
-pub fn erfc(x : Double) -> Double{
+
+///|
+/// Complementary error function, 1 - erf(x).
+pub fn erfc(x : Double) -> Double {
   1 - erf(x)
 }
-pub fn erfcx(x : Double) -> Double{
+
+///|
+/// Scaled complementary error function, exp(x**2) * erfc(x).
+pub fn erfcx(x : Double) -> Double {
   @math.exp(x * x) * erfc(x)
 }
-pub fn erfinv(x : Double) -> Double{
-  if x > 1.0 || x < -1.0{
+
+///|
+/// Inverse of the error function.
+pub fn erfinv(x : Double) -> Double {
+  if x > 1.0 || x < -1.0 {
     abort("Range Error!")
   }
   let df = t => 2.0 / @math.PI.sqrt() * @math.exp(-t * t)
   let ans = func_inv(x, erf, df, @math.PI.sqrt() / 2.0 * x)
-  let result = match ans{
+  let result = match ans {
     None => abort("No solution!")
     Some(val) => val
   }
   result
 }
-test "erfinv"{
+
+///|
+test "erfinv" {
   inspect(erfinv(0.5), content="0.4769362762044699")
-  inspect(erfinv(0.8),content="0.9061938024368235")
-  inspect(erfinv(0.9999),content="2.7510639057122948")
-  inspect(erfinv(-0.8),content="-0.9061938024368235")
-  inspect(erfinv(-0.9999),content="-2.7510639057122948")
+  inspect(erfinv(0.8), content="0.9061938024368235")
+  inspect(erfinv(0.9999), content="2.7510639057122948")
+  inspect(erfinv(-0.8), content="-0.9061938024368235")
+  inspect(erfinv(-0.9999), content="-2.7510639057122948")
 }
 
-pub fn erfcinv(y : Double) -> Double{
+///|
+/// Inverse of the complementary error function.
+pub fn erfcinv(y : Double) -> Double {
   erfinv(1.0 - y)
 }
 
-pub fn dawsn(x : Double) -> Double{
+///|
+/// Dawson's integral.
+pub fn dawsn(x : Double) -> Double {
   let f = t => @math.exp(t * t)
-  let (result, _, _) =@itgt.adap_quad_gk(f, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100).unwrap()
+  let (result, _, _) = @itgt.adap_quad_gk(
+    f, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100,
+  ).unwrap()
   @math.exp(x * x) * result
 }
 
-pub fn fresnel(x : Double) -> (Double, Double){
+///|	
+/// Fresnel integrals.
+pub fn fresnel(x : Double) -> (Double, Double) {
   let fs = t => @math.sin(@math.PI * 0.5 * t * t)
   let fc = t => @math.cos(@math.PI * 0.5 * t * t)
-  let (s, _, _) =@itgt.adap_quad_gk(fs, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100).unwrap()
-  let (c, _, _) =@itgt.adap_quad_gk(fc, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100).unwrap()
+  let (s, _, _) = @itgt.adap_quad_gk(
+    fs, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100,
+  ).unwrap()
+  let (c, _, _) = @itgt.adap_quad_gk(
+    fc, @itgt.kronrod_r21, 0.0, x, 1.0e-10, 1.0e-10, 100,
+  ).unwrap()
   (s, c)
 }
