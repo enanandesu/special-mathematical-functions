@@ -1,13 +1,17 @@
 {
-  "name": "NyarukOoO/special-mathematical-functions",
+  "name": "enanandesu/special-mathematical-functions",
   "version": "0.1.0",
   "deps": {
-    "Luna-Flow/calculus-numerical": "0.3.0-alpha-2"
+    "Luna-Flow/calculus-numerical": "0.3.0-alpha-3"
   },
   "readme": "README.md",
   "repository": "https://github.com/enanandesu/special-mathematical-functions",
   "license": "Apache-2.0",
-  "keywords": ["math", "function", "calculus"],
+  "keywords": [
+    "math",
+    "function",
+    "calculus"
+  ],
   "description": "",
   "source": "src"
 }
