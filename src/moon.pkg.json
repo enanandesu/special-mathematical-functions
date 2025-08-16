@@ -1,8 +1,16 @@
 {
   "import": [
     {
-      "path":"Luna-Flow/calculus-numerical/integration",
-      "alias":"itgt"
+      "path": "Luna-Flow/calculus-numerical/integration",
+      "alias": "itgt"
+    },
+    {
+      "path": "Kaida-Amethyst/math",
+      "alias": "kmath"
+    },
+    {
+      "path": "Luna-Flow/calculus-numerical/deriv",
+      "alias": "deriv"
     }
   ]
 }

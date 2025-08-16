@@ -1,8 +1,9 @@
 {
   "name": "enanandesu/special-mathematical-functions",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "deps": {
-    "Luna-Flow/calculus-numerical": "0.3.0-alpha-3"
+    "Luna-Flow/calculus-numerical": "0.3.0-alpha-3",
+    "Kaida-Amethyst/math": "0.1.19"
   },
   "readme": "README.md",
   "repository": "https://github.com/enanandesu/special-mathematical-functions",
