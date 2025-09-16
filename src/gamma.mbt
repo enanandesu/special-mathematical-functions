@@ -5,7 +5,7 @@ pub fn gamma(x : Double) -> Double {
 
 ///|
 pub fn gammaln(x : Double) -> Double {
-  @math.ln(gamma(x).abs())
+  @kmath.lgamma(x)
 }
 
 ///|
@@ -59,7 +59,7 @@ pub fn beta(a : Double, b : Double) -> Double {
 
 ///|
 pub fn betaln(a : Double, b : Double) -> Double {
-  @math.ln(beta(a, b).abs())
+  gammaln(a) + gammaln(b) - gammaln(a + b)
 }
 
 ///|
@@ -154,7 +154,7 @@ pub fn poch(z : Double, m : Double) -> Double {
 ///|
 test {
   inspect(gamma(1.73), content="0.9146653711862724")
-  inspect(gammaln(1.73), content="-0.08919699514701278")
+  inspect(gammaln(1.73), content="-0.08919699514701274")
   inspect(gammasgn(1.73), content="1")
   inspect(gammainc(0.71, 1.73), content="0.8946863363707583")
   inspect(gammaincinv(0.71, 0.26), content="0.14269189008369043")
@@ -162,8 +162,8 @@ test {
   inspect(betaln(1.73, 2.89), content="-2.1173062402068927")
   inspect(betainc(1.73, 2.89, 0.7), content="0.926323292643955")
   inspect(betaincc(1.73, 2.89, 0.7), content="0.07367670735604503")
-  inspect(betaincinv(1.73, 2.89, 0.7), content="0.48237044609452767")
-  inspect(betainccinv(1.73, 2.89, 0.7), content="0.24058042039824823")
+  inspect(betaincinv(1.73, 2.89, 0.7), content="0.48237044609452084")
+  inspect(betainccinv(1.73, 2.89, 0.7), content="0.24058042039824556")
   inspect(rgamma(1.73), content="1.0932960091219515")
   inspect(digamma(1.73), content="0.23207695930131053")
   inspect(poch(1.73, 2.89), content="15.049901208898861")
@@ -175,8 +175,8 @@ test {
   inspect(gammainc(0.11, 2.0), content="0.9936669667532537")
   inspect(gammaincinv(0.71, 0.88), content="1.6137426489557072")
   inspect(gammaincinv(0.37, 0.8), content="0.5910570267289916")
-  inspect(gammaincinv(0.11, 0.23), content="9.643432719030898e-7")
-  inspect(gammaincinv(0.9, 0.5), content="0.5967430489562275")
+  inspect(gammaincinv(0.11, 0.23), content="9.643436243989e-7")
+  inspect(gammaincinv(0.9, 0.5), content="0.5967430489553838")
 }
 
 ///|

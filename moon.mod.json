@@ -1,6 +1,6 @@
 {
   "name": "enanandesu/special-mathematical-functions",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "deps": {
     "Luna-Flow/calculus-numerical": "0.3.0-alpha-3",
     "Kaida-Amethyst/math": "0.1.19"
