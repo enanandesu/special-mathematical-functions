@@ -14,7 +14,7 @@ fn betaincinv(Double, Double, Double) -> Double
 
 fn betaln(Double, Double) -> Double
 
-fn bisection_guess(Double, (Double) -> Double, Double, Double, max_iterations? : Int, tol? : Double, String) -> Double?
+fn bisection_guess(Double, (Double) -> Double, Double, Double, max_iterations? : Int, tol? : Double, Monotonicity) -> Double?
 
 fn dawsn(Double) -> Double
 
@@ -63,6 +63,10 @@ fn rgamma(Double) -> Double
 // Errors
 
 // Types and methods
+pub(all) enum Monotonicity {
+  Inc
+  Dec
+}
 
 // Type aliases
 
