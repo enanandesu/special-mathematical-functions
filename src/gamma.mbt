@@ -19,12 +19,8 @@ pub fn gammasgn(x : Double) -> Double {
 
 ///|
 pub fn gammainc(a : Double, x : Double) -> Double {
-  if a <= 0 {
-    abort("a must be positive!")
-  }
-  if x < 0 {
-    abort("x must be in [0,+inf)")
-  }
+  guard a > 0 else { abort("a must be positive!") }
+  guard x >= 0 else { abort("x must be in [0,+inf)") }
   if x == 0 {
     return 0.0
   }
@@ -37,12 +33,8 @@ pub fn gammainc(a : Double, x : Double) -> Double {
 
 ///|
 pub fn gammaincinv(a : Double, y : Double) -> Double {
-  if a <= 0 {
-    abort("a must be positive!")
-  }
-  if y < 0 || y > 1 {
-    abort("y must be in [0,1]")
-  }
+  guard a > 0 else { abort("a must be positive!") }
+  guard 0.0 <= y && y <= 1.0 else { abort("y must be in [0,1]") }
   let f = gammainc(a, _)
   let ans = bisection_guess(y, f, 0.0, 50.0, Inc)
   let result = match ans {
@@ -64,9 +56,7 @@ pub fn betaln(a : Double, b : Double) -> Double {
 
 ///|
 pub fn betainc(a : Double, b : Double, x : Double) -> Double {
-  if x < 0 || x > 1 {
-    abort("x must be in [0,1]")
-  }
+  guard 0.0 <= x && x <= 1.0 else { abort("x must be in [0,1]") }
   if x == 0 || x == 1 {
     return x
   }
@@ -84,9 +74,7 @@ pub fn betaincc(a : Double, b : Double, x : Double) -> Double {
 
 ///|
 pub fn betaincinv(a : Double, b : Double, y : Double) -> Double {
-  if y < 0 || y > 1 {
-    abort("y must be in [0,1]")
-  }
+  guard 0.0 <= y && y <= 1.0 else { abort("y must be in [0,1]") }
   if y == 0 || y == 1 {
     return y
   }
@@ -117,9 +105,7 @@ pub fn digamma(x : Double) -> Double {
 
 ///|
 pub fn polygamma(n : Int, x : Double) -> Double {
-  if n < 0 {
-    abort("n must be non-negative")
-  }
+  guard n >= 0 else { abort("n must be non-negative") }
   let sgn = if n % 2 == 1 { 1.0 } else { -1.0 }
   let nfact = factorial(n).to_double()
   let mut k = 0.0

@@ -40,9 +40,7 @@ pub fn erfcx(x : Double) -> Double {
 ///|
 /// Inverse of the error function.
 pub fn erfinv(x : Double) -> Double {
-  if x > 1.0 || x < -1.0 {
-    abort("Range Error!")
-  }
+  guard -1.0 <= x && x <= 1.0 else { abort("Range Error!") }
   let df = t => 2.0 / @math.PI.sqrt() * @math.exp(-t * t)
   let ans = func_inv(x, erf, df, @math.PI.sqrt() / 2.0 * x)
   let result = match ans {
