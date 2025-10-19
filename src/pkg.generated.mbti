@@ -1,0 +1,70 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "enanandesu/special-mathematical-functions"
+
+// Values
+fn beta(Double, Double) -> Double
+
+fn betainc(Double, Double, Double) -> Double
+
+fn betaincc(Double, Double, Double) -> Double
+
+fn betainccinv(Double, Double, Double) -> Double
+
+fn betaincinv(Double, Double, Double) -> Double
+
+fn betaln(Double, Double) -> Double
+
+fn bisection_guess(Double, (Double) -> Double, Double, Double, max_iterations? : Int, tol? : Double, String) -> Double?
+
+fn dawsn(Double) -> Double
+
+fn digamma(Double) -> Double
+
+fn ellipe(Double) -> Double
+
+fn ellipeinc(Double, Double) -> Double
+
+fn ellipj(Double, Double) -> (Double, Double, Double, Double)
+
+fn ellipk(Double) -> Double
+
+fn ellipkinc(Double, Double) -> Double
+
+fn erf(Double) -> Double
+
+fn erfc(Double) -> Double
+
+fn erfcinv(Double) -> Double
+
+fn erfcx(Double) -> Double
+
+fn erfinv(Double) -> Double
+
+fn fresnel(Double) -> (Double, Double)
+
+fn func_inv(Double, (Double) -> Double, (Double) -> Double, Double, max_iterations? : Int, tol? : Double) -> Double?
+
+fn gamma(Double) -> Double
+
+fn gammainc(Double, Double) -> Double
+
+fn gammaincinv(Double, Double) -> Double
+
+fn gammaln(Double) -> Double
+
+fn gammasgn(Double) -> Double
+
+fn poch(Double, Double) -> Double
+
+fn polygamma(Int, Double) -> Double
+
+fn rgamma(Double) -> Double
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits
+
