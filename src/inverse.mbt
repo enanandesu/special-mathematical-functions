@@ -5,8 +5,8 @@ pub fn func_inv(
   f : (Double) -> Double,
   d : (Double) -> Double,
   initial_guess : Double,
-  max_iterations~ : Int = 100,
-  tol~ : Double = 1.0e-12,
+  max_iterations? : Int = 100,
+  tol? : Double = 1.0e-12,
 ) -> Double? {
   let mut x = initial_guess
   for iter in 0..<max_iterations {
@@ -30,8 +30,8 @@ pub fn bisection_guess(
   f : (Double) -> Double,
   min_range : Double,
   max_range : Double,
-  max_iterations~ : Int = 200,
-  tol~ : Double = 1.0e-14,
+  max_iterations? : Int = 200,
+  tol? : Double = 1.0e-14,
   monotonicity : String,
 ) -> Double? {
   if monotonicity != "I" && monotonicity != "D" {

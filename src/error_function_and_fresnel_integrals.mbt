@@ -77,7 +77,7 @@ pub fn dawsn(x : Double) -> Double {
   @math.exp(x * x) * result
 }
 
-///|	
+///|
 /// Fresnel integrals.
 pub fn fresnel(x : Double) -> (Double, Double) {
   let fs = t => @math.sin(@math.PI * 0.5 * t * t)
