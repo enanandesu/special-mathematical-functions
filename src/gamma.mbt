@@ -36,12 +36,10 @@ pub fn gammaincinv(a : Double, y : Double) -> Double {
   guard a > 0 else { abort("a must be positive!") }
   guard 0.0 <= y && y <= 1.0 else { abort("y must be in [0,1]") }
   let f = gammainc(a, _)
-  let ans = bisection_guess(y, f, 0.0, 50.0, Inc)
-  let result = match ans {
+  match bisection_guess(y, f, 0.0, 50.0, Inc) {
     None => abort("No solution!")
     Some(val) => val
   }
-  result
 }
 
 ///|
@@ -79,12 +77,10 @@ pub fn betaincinv(a : Double, b : Double, y : Double) -> Double {
     return y
   }
   let f = betainc(a, b, _)
-  let ans = bisection_guess(y, f, 0.0, 1.0, Inc)
-  let result = match ans {
+  match bisection_guess(y, f, 0.0, 1.0, Inc) {
     None => abort("No solution!")
     Some(val) => val
   }
-  result
 }
 
 ///|

@@ -42,12 +42,10 @@ pub fn erfcx(x : Double) -> Double {
 pub fn erfinv(x : Double) -> Double {
   guard -1.0 <= x && x <= 1.0 else { abort("Range Error!") }
   let df = t => 2.0 / @math.PI.sqrt() * @math.exp(-t * t)
-  let ans = func_inv(x, erf, df, @math.PI.sqrt() / 2.0 * x)
-  let result = match ans {
+  match func_inv(x, erf, df, @math.PI.sqrt() / 2.0 * x) {
     None => abort("No solution!")
     Some(val) => val
   }
-  result
 }
 
 ///|
