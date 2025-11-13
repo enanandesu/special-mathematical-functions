@@ -1,9 +1,7 @@
 ///|
 /// Incomplete elliptic integral of the first kind F(phi, m)
 pub fn ellipkinc(phi : Double, m : Double) -> Double {
-  if m >= 1.0 {
-    abort("Parameter m must be less than 1")
-  }
+  guard m < 1.0 else { abort("Parameter m must be less than 1") }
   let f = t => @math.pow(1.0 - m * @math.sin(t) * @math.sin(t), -0.5)
   let (result, _, _) = @itgt.adap_quad_gk(
     f, @itgt.kronrod_r21, 0.0, phi, 1.0e-10, 1.0e-10, 100,
@@ -20,9 +18,7 @@ pub fn ellipk(m : Double) -> Double {
 ///|
 /// Incomplete elliptic integral of the second kind F(phi, m)
 pub fn ellipeinc(phi : Double, m : Double) -> Double {
-  if m >= 1.0 {
-    abort("Parameter m must be less than 1")
-  }
+  guard m < 1.0 else { abort("Parameter m must be less than 1") }
   let f = t => (1.0 - m * @math.sin(t) * @math.sin(t)).sqrt()
   let (result, _, _) = @itgt.adap_quad_gk(
     f, @itgt.kronrod_r21, 0.0, phi, 1.0e-10, 1.0e-10, 100,
